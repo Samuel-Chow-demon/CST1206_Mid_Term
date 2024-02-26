@@ -159,7 +159,7 @@ function createEachMovieUI(dataEachMovie, genreIdNameObjList)
     // w-72 h-80 max-w-xs
     const eachMovieUI = 
     `
-        <div class="inline-block px-3">
+        <div class="inline-block px-3 select-none">
             <div class="w-72 h-fit overflow-hidden select-none rounded-t-xl shadow-md shadow-zinc-500 bg-gray-200 hover:shadow-2xl transition-shadow duration-300 ease-in-out">
                 <img class="w-full pointer-events-none rounded-lg" src=${CONST_MOVIE_POSTER_LINK_PREFIX + dataEachMovie[MOVIE_API_POSTER_PATH_KEY]} alt="${dataEachMovie[MOVIE_API_TITLE_KEY]}">
             </div>
@@ -323,7 +323,7 @@ movie_list_scroll_container.addEventListener("mousemove", (event)=>{
     }
 
     const mouseX = event.clientX;
-    const mouseY = event.clientY;
+    const mouseY = event.clientY + 220;
 
     movie_list_left_button.style.top = `${mouseY}px`;
     movie_list_left_button.style.left = `${mouseX - 50}px`;
@@ -333,11 +333,12 @@ movie_list_scroll_container.addEventListener("mousemove", (event)=>{
 
 movie_list_scroll_container.addEventListener("mouseover", (event)=>{
 
+    // Set to Display
     domObjectCheckToHideAndDisplay(movie_list_left_button, false);
     domObjectCheckToHideAndDisplay(movie_list_right_button, false);
 
     const mouseX = event.clientX;
-    const mouseY = event.clientY;
+    const mouseY = event.clientY + 220;
 
     movie_list_left_button.style.top = `${mouseY}px`;
     movie_list_left_button.style.left = `${mouseX - 50}px`;
@@ -346,10 +347,11 @@ movie_list_scroll_container.addEventListener("mouseover", (event)=>{
 });
 
 movie_list_scroll_container.addEventListener("mouseout", (event)=>{
+
+    // Set to Hide
     domObjectCheckToHideAndDisplay(movie_list_left_button, true);
     domObjectCheckToHideAndDisplay(movie_list_right_button, true);
 });
-
 
 // 5 - Default First Run Call to Display the "Top Rate" Movie
 getAllMovies(OBJ_CAT_TO_API_LINK[curDropDownSelection]);
