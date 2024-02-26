@@ -122,6 +122,9 @@ function createMovieUI(arrMoviesObj, genreIdNameObjList)
     }
 
     movie_list_container.innerHTML = szAllMoviesCard;
+
+    // Reset back the scroll X to left most for each refresh Category
+    movie_list_scroll_container.scrollLeft = 0;
 }
 
 function createEachMovieUI(dataEachMovie, genreIdNameObjList)
